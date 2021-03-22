@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Project8
-//
-//  Created by Runyasak Chaengnaimuang on 23/3/2564 BE.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -36,8 +29,17 @@ class ViewController: UIViewController {
         answerLabel.translatesAutoresizingMaskIntoConstraints = false
         answerLabel.font = UIFont.systemFont(ofSize: 24)
         answerLabel.text = "ANSWERS"
+        answerLabel.textAlignment = .right
         answerLabel.numberOfLines = 0
         view.addSubview(answerLabel)
+        
+        currentAnswer = UITextField()
+        currentAnswer.translatesAutoresizingMaskIntoConstraints = false
+        currentAnswer.placeholder = "Tap letters to guess"
+        currentAnswer.textAlignment = .center
+        currentAnswer.font  = UIFont.systemFont(ofSize: 44)
+        currentAnswer.isUserInteractionEnabled = false
+        view.addSubview(currentAnswer)
         
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
@@ -49,7 +51,13 @@ class ViewController: UIViewController {
             answerLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: -100),
             answerLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.4, constant: -100),
             answerLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor),
+            currentAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            currentAnswer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            currentAnswer.topAnchor.constraint(equalTo: cluesLabel.bottomAnchor, constant: 20)
         ])
+        
+        cluesLabel.backgroundColor = .red
+        answerLabel.backgroundColor = .blue
     }
     
     override func viewDidLoad() {
